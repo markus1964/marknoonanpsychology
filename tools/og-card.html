@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Source for assets/og-card.jpg, the image shown when the site is shared.
+     Rebuild after editing (any Chromium browser works):
+       "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser" --headless --disable-gpu \
+         --force-device-scale-factor=2 --window-size=1200,630 \
+         --screenshot=/tmp/og.png "file://$PWD/tools/og-card.html"
+       sips -z 630 1200 /tmp/og.png --out /tmp/og1200.png
+       sips -s format jpeg -s formatOptions 86 /tmp/og1200.png --out assets/og-card.jpg -->
+<html><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    background: #FBF8F3;
+    font-family: ui-sans-serif, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #3C3A34;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding: 0 76px;
+  }
+  .text { flex: 1; }
+  .eyebrow {
+    font-size: 20px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #6E6A60; margin-bottom: 26px;
+  }
+  h1 {
+    font-family: "Cormorant Garamond", Garamond, "Times New Roman", serif;
+    font-weight: 400; font-size: 76px; line-height: 1.05; color: #1F4436;
+    letter-spacing: 0.01em; margin-bottom: 28px;
+  }
+  .sub { font-size: 26px; line-height: 1.5; color: #3C3A34; max-width: 19ch; }
+  .place {
+    margin-top: 34px; font-size: 21px; color: #6E6A60;
+    padding-top: 22px; border-top: 1px solid #E2DACB; display: inline-block;
+  }
+  figure {
+    width: 372px; flex: none;
+    background: #fff; border: 1px solid #E2DACB; border-radius: 8px;
+    padding: 14px;
+    box-shadow: 0 2px 4px rgba(58,48,32,.07), 0 18px 44px rgba(58,48,32,.10);
+  }
+  img { display: block; width: 100%; height: 430px; object-fit: cover; border-radius: 4px; }
+</style></head>
+<body>
+  <div class="text">
+    <div class="eyebrow">Registered Psychologist</div>
+    <h1>Mark Noonan</h1>
+    <div class="sub">Therapy for adults and adolescents aged 15+</div>
+    <div class="place">Fridays at TreeHaus, Newport</div>
+  </div>
+  <figure><img src="../assets/mark.jpg" alt=""></figure>
+</body></html>
