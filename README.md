@@ -38,10 +38,6 @@ Almost every word on the site is yours, just reordered. Two blocks are not, and 
 
 Read both on the site, mark up anything that is not how you would put it, and send it back.
 
-### Your AHPRA registration number
-
-The footer says you are registered with AHPRA but does not give your number. Most Australian practitioner sites show it. Send it through if you would like it added.
-
 ---
 
 ## Changing the words later
@@ -145,7 +141,7 @@ A realistic expectation: a brand new website competes against clinics that have 
 
 - **There is no contact form on purpose.** People phone or email you directly. That means no third-party company ever handles a message from someone about their mental health, which felt like the right call for a psychology practice.
 - **The "Make an enquiry" button** opens the visitor's email with a short template already written, so they are not staring at an empty message wondering what to say.
-- **The map** is a picture, not a Google map. It loads instantly, does not track your visitors, and links through to directions when clicked.
+- **The map** is a picture, not a Google map. It loads instantly, does not track your visitors, and links through to directions when clicked. There are two versions, light and dark, and the site shows whichever matches the visitor's setting. Only the one being used is downloaded.
 - **Light and dark.** The site follows whatever the visitor's phone or computer is set to. The small circle at the top right lets them switch.
 - **No tracking, no cookies, no analytics.** Nothing is collected about anyone who visits.
 
@@ -156,7 +152,9 @@ A realistic expectation: a brand new website competes against clinics that have 
 Plain HTML and CSS, no build step, no dependencies, no framework. `index.html`, `styles.css`, `site.js`, plus `assets/`.
 
 - Theming is a single set of CSS custom properties at the top of `styles.css`, redefined under `prefers-color-scheme: dark` and `[data-theme="dark"]`. The toggle writes to `localStorage`.
-- `assets/map-newport.png` is stitched from OpenStreetMap tiles by `tools/make-map.py`. Attribution is displayed as the licence requires. Re-run it if the address changes.
+- `assets/map-newport.png` and `assets/map-newport-dark.png` are stitched from CARTO basemap tiles by `tools/make-map.py`, which writes both in one run. The map is a CSS background driven by the `--map` custom property rather than an `<img>`, so only the current theme's file is fetched. OpenStreetMap and CARTO are both credited under the map as their licences require. Re-run the script if the address changes.
+- Two things make the map legible and are easy to undo by accident. It is rendered at 880x587 to match its roughly 440px display box at 2x, using CARTO's `@2x` tiles so labels are drawn at retina size; rendering a larger image and letting the browser shrink it makes the street names unreadable. And the dark tiles get a tone curve, because CARTO's dark style squeezes land, roads and labels into values 8 to 60 and is far too dim inside a small panel. Constants and reasoning are in the script.
+- Google Maps imagery is deliberately not used. Screenshotting Google Maps and hosting the result breaches their terms; the licensed route is the Static Maps API, which needs an API key with billing enabled.
 - `assets/og-card.jpg` (1200x630 social share card) is rendered from `tools/og-card.html`; the rebuild command is a comment at the top of that file. Rebuild whenever the photo, name or tagline changes.
 - The three modality terms in "My approach" are `<button>` elements with `aria-expanded`/`aria-controls` driving sibling `.term-panel` divs. One open at a time, all closed on load.
 - No Medicare rebate amount is published deliberately, since the Government indexes rebates every 1 July and any figure would silently go stale. The relevant item is 80110 on [MBS Online](https://www9.health.gov.au/mbs/fullDisplay.cfm?type=item&q=80110) if that decision is ever revisited.
