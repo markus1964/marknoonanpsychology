@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marknoonanpsychology.com.au/sitemap.xml
