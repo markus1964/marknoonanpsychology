@@ -34,7 +34,7 @@ If you set one up, tell me before the site goes live and I will swap it in. It a
 Almost every word on the site is yours, just reordered. Two blocks are not, and I would like you to correct them or cut them:
 
 1. **The "Getting started" section**, the three numbered steps about first contact, a short conversation, and the first session. I wrote these because people deciding whether to email a psychologist are usually most anxious about what happens next. But they describe how *you* work, so the words should be yours.
-2. **The three therapy explanations.** On the site, "Acceptance and Commitment Therapy (ACT)", "EMDR" and "attachment-informed therapy" can be clicked, and a short plain-English description appears. I drafted those descriptions from published sources. You may well explain them differently to your own clients.
+2. **The two therapy explanations.** On the site, "ACT" and "attachment" in the "My approach" section can be clicked, and a short plain-English description appears. I drafted those descriptions from published sources. You may well explain them differently to your own clients.
 
 Read both on the site, mark up anything that is not how you would put it, and send it back.
 
@@ -129,6 +129,10 @@ Go to [business.google.com](https://business.google.com) and create a profile fo
 
 Google verifies the address by posting a code to it, which takes a week or two, so start it early. You will need TreeHaus to be comfortable with you listing their address.
 
+### Nearby suburbs
+
+Under the map, the site names the suburbs around Newport in an ordinary sentence, and the hidden data lists them properly. That is the honest version of what some clinics do by stuffing suburb names into invisible text, which Google penalises. If there is a suburb you actually draw clients from and I have missed it, tell me and I will add it.
+
 ### Google Search Console
 
 Go to [search.google.com/search-console](https://search.google.com/search-console), add `marknoonanpsychology.com.au`, and follow the verification steps. Then submit `https://marknoonanpsychology.com.au/sitemap.xml` when it asks for a sitemap. This tells Google the site exists rather than waiting to be found, and shows you what people searched for to reach you.
@@ -156,7 +160,7 @@ Plain HTML and CSS, no build step, no dependencies, no framework. `index.html`, 
 - Two things make the map legible and are easy to undo by accident. It is rendered at 880x587 to match its roughly 440px display box at 2x, using CARTO's `@2x` tiles so labels are drawn at retina size; rendering a larger image and letting the browser shrink it makes the street names unreadable. And the dark tiles get a tone curve, because CARTO's dark style squeezes land, roads and labels into values 8 to 60 and is far too dim inside a small panel. Constants and reasoning are in the script.
 - Google Maps imagery is deliberately not used. Screenshotting Google Maps and hosting the result breaches their terms; the licensed route is the Static Maps API, which needs an API key with billing enabled.
 - `assets/og-card.jpg` (1200x630 social share card) is rendered from `tools/og-card.html`; the rebuild command is a comment at the top of that file. Rebuild whenever the photo, name or tagline changes.
-- The three modality terms in "My approach" are `<button>` elements with `aria-expanded`/`aria-controls` driving sibling `.term-panel` divs. One open at a time, all closed on load.
+- The two modality terms in "My approach" are `<button>` elements with `aria-expanded`/`aria-controls` driving sibling `.term-panel` divs. One open at a time, all closed on load.
 - No Medicare rebate amount is published deliberately, since the Government indexes rebates every 1 July and any figure would silently go stale. The relevant item is 80110 on [MBS Online](https://www9.health.gov.au/mbs/fullDisplay.cfm?type=item&q=80110) if that decision is ever revisited.
 - `CNAME` holds the apex domain for GitHub Pages. `sitemap.xml` has a `lastmod` worth bumping on meaningful content changes.
 - Cloudflare Pages is a drop-in alternative: connect the repo, no build command, output directory `/`.
